@@ -9,4 +9,15 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+	<feature name="ADBMobile">
+		<param name="id" value="https://github.com/Adobe-Marketing-Cloud/mobile-services#0482f9cedf90c98a8d4b07219ece1933b2e46a60"/>
+	</feature>
+
+	<hook src="scripts/restore_plugins.js" type="after_platform_add"/>
+	<hook src="scripts/copy_resource_files.js" type="after_prepare"/>
+	<hook src="scripts/copy_AMS_config.js" type="after_prepare"/>
+
+	<gap:platform name="ios"/>
+	<gap:platform name="android"/>
+
 </widget>

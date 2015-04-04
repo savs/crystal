@@ -33,6 +33,8 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
+        ADB.setDebugLogging(true);
+        app.trackScreen('title');
         app.receivedEvent('deviceready');
     },
     // Update DOM on a Received Event
@@ -45,7 +47,15 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
+    },
+    // track screens in Adobe Mobile Services
+    trackScreen: function(id) {
+        var title = document.getElementsByTagName("title")[0].innerHTML;
+        ADB.trackState(title);
+        console.log('Tracked screen: ' + title);
     }
+
+
 };
 
 app.initialize();
